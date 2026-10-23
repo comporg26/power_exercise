@@ -1,8 +1,11 @@
+.PHONY: all clean
 
-
-all:   
-	as -o math.o math.s
+all: test
+	
+test: math.o test.c
 	gcc -O0 -no-pie -o test math.o test.c
+math.o:
+	as -o math.o math.s
 
 clean:
-	rm *.o
+	rm -vf *.o test
